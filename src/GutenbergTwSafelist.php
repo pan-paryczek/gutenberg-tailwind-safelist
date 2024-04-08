@@ -70,7 +70,7 @@ class GutenbergTwSafelist
                     return $block;
                 }
 
-                if (str_starts_with($block['blockName'], 'acf/')) {
+                if (str_starts_with('acf/',$block['blockName'])) {
                     $attrs = acf_prepare_block($block['attrs']);
                     $attrs['id'] = acf_ensure_block_id_prefix($post->ID);
                     acf_setup_meta($attrs['data'], $attrs['id'], true);
@@ -132,7 +132,7 @@ class GutenbergTwSafelist
     {
         return array_filter(
             array_map(function ($class) {
-                if (str_starts_with('wp-', $class)) {
+                if (str_starts_with($class, 'wp-')) {
                     return false;
                 }
 
